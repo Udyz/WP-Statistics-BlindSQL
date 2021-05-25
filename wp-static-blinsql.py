@@ -37,10 +37,10 @@ def exploit(url):
 			return True
 		else:
 			print("(-) %s Target is not vuln!" %(url.replace('https://', '').replace('http://', '').replace('/','')))
-			return False
+			exit()
 	except:
 		print("(-) WP-statistical Unable to detect version.")
-		return False
+		exit()
 import sys
 exploit()
 blindsql()
