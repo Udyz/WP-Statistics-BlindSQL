@@ -52,6 +52,10 @@ web application technology: WP Engine, Nginx
 back-end DBMS: MySQL >= 5.0.12 (Percona fork)
 banner: '5.7.33-36-log'
 ```
+# Nuclei Templates:
+![image](https://user-images.githubusercontent.com/39673284/120155576-2c6a4680-c21b-11eb-8e4a-828017921231.png)
+
+
 # Reference:
 - https://www.exploit-db.com/exploits/49894
 - https://www.wordfence.com/blog/2021/05/over-600000-sites-impacted-by-wp-statistics-patch/
